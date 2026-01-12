@@ -3,6 +3,6 @@
 Welcome to my Portfolio. Here I would like to show you my projects (Excel/Sheets, SQL, BigQuerry, Dashboards)
 
 ## Projects
-- [Cyclistic Rental Analytics](projects/cyclistic.html)
+- [Cyclistic Rental Analytics](projects/Cyclist_Rentals.html)
 - [BMW Sales (2010–2024) Analysis](projects/bmw-sales.html)
 
