@@ -12,7 +12,7 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 ---
 
 ## Featured Project
-### 🚲 Cyclistic Rental Analytics (Case Study)
+### 🚲 Cyclist Rental Analytics (Case Study)
 **Goal:** Understand how member vs casual behavior differs to guide marketing strategy.  
 **Tools:** SQL (BigQuery), Google Sheets 
 **Key outcome:** Clear weekly/seasonal usage patterns + recommendations for converting casual riders.
