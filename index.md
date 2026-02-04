@@ -17,7 +17,7 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 **Tools:** SQL (BigQuery), Google Sheets 
 **Key outcome:** Clear weekly/seasonal usage patterns + recommendations for converting casual riders.
 
-➡️ **Project page:** [Cyclistic Rental Analytics](projects/Cyclistic_Rental_Analytics.html)
+➡️ **Project page:** [Cyclistic Rental Analytics](projects/Cyclist_Rentals.html)
 
 ---
 
