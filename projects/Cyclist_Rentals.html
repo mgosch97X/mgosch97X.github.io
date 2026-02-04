@@ -3,70 +3,197 @@
 <head>
   <meta charset="utf-8" />
   <title>Cyclist Rental Analytics</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f8fa;
+      color: #111;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 70px;
+    }
+    h1 { margin: 0 0 8px; font-size: 34px; }
+    .subtitle { margin: 0 0 18px; color: #555; }
+    .chip-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 18px; }
+    .chip {
+      font-size: 13px;
+      font-weight: 700;
+      background: #eef2ff;
+      color: #1e40af;
+      border: 1px solid #c7d2fe;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 24px; }
+    .btn {
+      text-decoration: none;
+      background: #111827;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn.secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      margin-top: 18px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 12px;
+    }
+    @media(max-width: 900px){
+      .grid { grid-template-columns: 1fr; }
+    }
+    .chart-title { margin: 0 0 6px; font-size: 16px; }
+    .insight { margin: 0 0 12px; color: #555; font-size: 14px; }
+    img { width: 100%; border-radius: 10px; border: 1px solid #e5e7eb; }
+    .footer { margin-top: 35px; color: #666; font-size: 14px; }
+  </style>
 </head>
-<body style="font-family: Arial; max-width: 900px; margin: 40px auto; line-height: 1.6;">
-  <h1>Cyclist Rental Analytics (Google Sheets + BigQuery)</h1>
 
-  <p><b>Goal:</b> Analyze bike rentals to find demand patterns, top stations, and opportunities to improve operations.</p>
+<body>
+  <div class="container" id="top">
 
-  <h2>Tools</h2>
-  <ul>
-    <li>BigQuery SQL</li>
-    <li>Google Sheets (charts)</li>
-  </ul>
+    <h1>Cyclist Rental Analytics</h1>
+    <p class="subtitle">
+      Goal: Analyze bike rentals to identify demand patterns, top stations, and differences between members vs casual riders.
+    </p>
 
-  <h2>Key Insights</h2>
-  </ul>
-    <li>Peak demand occurs during commute hours.</li>
-    <li>Top stations account for a large share of rides.</li>
-    <li>Ride demand peaks mid-week, with Wednesday through Friday showing the highest number of trips.</li>
-    <li>Members generate most rides in both 2019 and 2020, indicating that repeat usage is driven mainly by subscription customers.</li>
-    <li>Casual riders show longer trip duration than members.</li> 
-    <li>Ride demand grew year over year, suggesting increasing adoption of bike rentals in 2020.</li>
-  </ul>
+    <div class="chip-row">
+      <span class="chip">BigQuery SQL</span>
+      <span class="chip">Google Sheets</span>
+      <span class="chip">Data Storytelling</span>
+    </div>
 
-  <h2>Charts</h2>
-  
-  <h3>Rides by Hour</h3>
-  <img src="../assets/Rides_by_Hour.png" alt="Rides by hour" style="width:100%; border:1px solid #ddd;" />
+    <div class="btn-row">
+      <a class="btn" href="#charts">View Charts</a>
+      <a class="btn secondary" href="#sql">SQL Queries</a>
+      <a class="btn secondary" href="#sheets">Google Sheets</a>
+      <a class="btn secondary" href="https://mgosch97x.github.io/">← Back to Portfolio</a>
+    </div>
 
-  <h3>Top Start Stations</h3>
-  <img src="../assets/Popular_start_stations.png" alt="Top start stations" style="width:100%; border:1px solid #ddd;" />
+    <div class="card">
+      <h2>Tools</h2>
+      <ul>
+        <li>BigQuery SQL</li>
+        <li>Google Sheets (charts)</li>
+      </ul>
+    </div>
 
-  <h3>Top End Stations</h3>
-  <img src="../assets/Popular_end_stations.png" alt="Top end stations" style="width:100%; border:1px solid #ddd;" />
+    <div class="card">
+      <h2>Key Insights</h2>
+      <ul>
+        <li><strong>Peak demand occurs during commute hours</strong>, useful for staffing and rebalancing.</li>
+        <li><strong>Top stations account for a large share of rides</strong>, making them critical operational hubs.</li>
+        <li><strong>Demand peaks mid-week</strong> (Wed–Fri), suggesting commute-driven usage.</li>
+        <li><strong>Members generate most rides</strong>, meaning repeat usage is driven by subscriptions.</li>
+        <li><strong>Casual riders take longer trips</strong>, indicating leisure/tourism use cases.</li>
+        <li><strong>Rides increased from 2019 to 2020</strong>, indicating higher adoption.</li>
+      </ul>
+    </div>
 
-  <h3>Top Days of the Week</h3>
-  <img src="../assets/Peak_days_per_week.png" alt="Top Days of the Week" style="width:100%; border:1px solid #ddd;" />
+    <div class="card" id="charts">
+      <h2>Charts</h2>
+      <div class="grid">
 
-  <h3>Amount of Rides (Members vs Casuals)</h3>
-  <img src="../assets/Amount_of_Rides_Members_vs_Casuals.png" alt="Amount of Rides (Members vs Casuals)" style="width:100%; border:1px solid #ddd;" />
+        <div class="card">
+          <p class="chart-title">Rides by Hour (2019 vs 2020)</p>
+          <p class="insight">Takeaway: Usage peaks in morning and late afternoon commute hours.</p>
+          <img src="../assets/Rides_by_Hour.png" alt="Rides by hour" />
+        </div>
 
-  <h3>Average Duration of Rides (Members vs Casuals)</h3>
-  <img src="../assets/Avg_Ride_Duration_Member_vs_Casual.png" alt="Average Duration of Rides (Members vs Casuals)" style="width:100%; border:1px solid #ddd;" />
+        <div class="card">
+          <p class="chart-title">Top Start Stations</p>
+          <p class="insight">Takeaway: A small group of stations drives a large portion of demand.</p>
+          <img src="../assets/Popular_start_stations.png" alt="Top start stations" />
+        </div>
 
-  <h3>Rides per Year 2019 vs 2020</h3>
-  <img src="../assets/Rides_per_Year.png" alt="Rides per Year 2019 vs 2020" style="width:100%; border:1px solid #ddd;" />
+        <div class="card">
+          <p class="chart-title">Top End Stations</p>
+          <p class="insight">Takeaway: End-station concentration helps prioritize rebalancing routes.</p>
+          <img src="../assets/Popular_end_stations.png" alt="Top end stations" />
+        </div>
 
-  <h2>SQL</h2>
-  <ul>
-    <li><a href="../sql/Cyclist_Rentals_Dataset_merge.sql">Unified View</a></li>
-    <li><a href="../sql/Cyclist_Rentals_Data_Validation.sql">Filtering Relevant Data</a></li>
-    <li><a href="../sql/Cyclist_Rentals_Peak_Days_&_hours.sql">Top hours and days in the Week</a></li>
-    <li><a href="../sql/Cyclist_Rentals_Popular_End_&_Start_Stations.sql">Top Start and End Stations</a></li>
-    <li><a href="../sql/Cyclist_Rentals_Subscription_effectiveness.sql">Average Duration and Amount of Rides (Members vs Casuals)</a></li>
-    <li><a href="../sql/Cyclist_Rentals_Rides_per_Year.sql">Rides per Year Comparison</a></li>
-  </ul>
+        <div class="card">
+          <p class="chart-title">Top Days of the Week</p>
+          <p class="insight">Takeaway: Mid-week (Wed–Fri) shows the strongest ride volumes.</p>
+          <img src="../assets/Peak_days_per_week.png" alt="Top Days of the Week" />
+        </div>
 
-  <h2>Google Sheet</h2>
-  <p>
-    Link to the Google Sheets:
-  </p> 
-    <a href="https://docs.google.com/spreadsheets/d/1Dphwc6N2K3VOfQt1Zia6EZqypOAiv8_UVYelCcFWxZo/edit?usp=sharing" target="_blank">Open Sheet</a>
-  </p>
-      <a href="https://docs.google.com/spreadsheets/d/1gv_V17pQPWF7XPaKKriMn6XTOB3_m8Z-PlNhdjShoS0/edit?usp=sharing" target="_blank">Open Sheet</a>
-  </p>
+        <div class="card">
+          <p class="chart-title">Amount of Rides (Members vs Casuals)</p>
+          <p class="insight">Takeaway: Members account for most rides, indicating subscription-driven usage.</p>
+          <img src="../assets/Amount_of_Rides_Members_vs_Casuals.png" alt="Amount of Rides (Members vs Casuals)" />
+        </div>
 
-  <p><a href="https://mgosch97x.github.io/">← Back to Portfolio</a></p>
+        <div class="card">
+          <p class="chart-title">Average Ride Duration (Members vs Casuals)</p>
+          <p class="insight">Takeaway: Casual riders take longer trips, suggesting leisure or tourism behavior.</p>
+          <img src="../assets/Avg_Ride_Duration_Member_vs_Casual.png" alt="Average Duration of Rides (Members vs Casuals)" />
+        </div>
+
+        <div class="card">
+          <p class="chart-title">Rides per Year (2019 vs 2020)</p>
+          <p class="insight">Takeaway: Total rides increased year-over-year, indicating higher adoption.</p>
+          <img src="../assets/Rides_per_Year.png" alt="Rides per Year 2019 vs 2020" />
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card" id="sql">
+      <h2>SQL (BigQuery)</h2>
+      <p class="insight">Queries used to merge, clean, validate, and aggregate the dataset.</p>
+      <ul>
+        <li><a href="../sql/Cyclist_Rentals_Dataset_merge.sql">Unified View</a></li>
+        <li><a href="../sql/Cyclist_Rentals_Data_Validation.sql">Filtering Relevant Data</a></li>
+        <li><a href="../sql/Cyclist_Rentals_Peak_Days_&_hours.sql">Top hours and days in the Week</a></li>
+        <li><a href="../sql/Cyclist_Rentals_Popular_End_&_Start_Stations.sql">Top Start and End Stations</a></li>
+        <li><a href="../sql/Cyclist_Rentals_Subscription_effectiveness.sql">Average Duration and Amount of Rides (Members vs Casuals)</a></li>
+        <li><a href="../sql/Cyclist_Rentals_Rides_per_Year.sql">Rides per Year Comparison</a></li>
+      </ul>
+    </div>
+
+    <div class="card" id="sheets">
+      <h2>Google Sheets</h2>
+      <p class="insight">Charts and pivots used to validate and communicate results.</p>
+      <ul>
+        <li><a href="https://docs.google.com/spreadsheets/d/1Dphwc6N2K3VOfQt1Zia6EZqypOAiv8_UVYelCcFWxZo/edit?usp=sharing" target="_blank">Open Sheet (Trips_2019)</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1gv_V17pQPWF7XPaKKriMn6XTOB3_m8Z-PlNhdjShoS0/edit?usp=sharing" target="_blank">Open Sheet (Trips_2020)</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Increase bike availability and rebalancing during commute hours to reduce empty docks.</li>
+        <li>Prioritize maintenance and capacity planning for top stations that drive most rides.</li>
+        <li>Launch conversion campaigns for casual riders (e.g., weekend pass → membership trial).</li>
+        <li>Promote longer leisure routes and tourist bundles for casual riders.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <a href="#top">Back to top</a> • <a href="https://mgosch97x.github.io/">← Back to Portfolio</a>
+    </div>
+
+  </div>
 </body>
 </html>
