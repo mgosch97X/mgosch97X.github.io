@@ -1,6 +1,8 @@
 # Michael Gosch — Data Analyst Portfolio
 
 **Junior Data Analyst (Germany) | Tableau • SQL • Google BigQuery • Excel/Google Sheets**  
+Career switcher with a background in operations.
+Focused on SQL-based analysis, dashboards, and business insights.
 I build clean, stakeholder-friendly dashboards and analyses that turn data into actionable business decisions.
 
 **Links:**  
