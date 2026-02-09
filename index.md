@@ -9,8 +9,7 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 - **GitHub:** https://github.com/mgosch97X  
 - **LinkedIn:**   
 - **Email:** mgosch97@gmail.com  
-- **Resume (PDF):**  [Download CV (English)](assets/Michael_Gosch_EN_Resume.pdf)            
-                     [Download Lebenslauf (Deutsch)](assets/Michael_Gosch_DE_Lebenslauf.pdf)
+- **Resume (PDF):**  [Download CV (English)](assets/Michael_Gosch_EN_Resume.pdf)  [Download Lebenslauf (Deutsch)](assets/Michael_Gosch_DE_Lebenslauf.pdf)
 
 ---
 
