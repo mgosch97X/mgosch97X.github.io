@@ -7,7 +7,7 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 
 **Links:**  
 - **GitHub:** https://github.com/mgosch97X  
-- **LinkedIn:**   
+- **LinkedIn:** https://www.linkedin.com/in/michael-gosch/
 - **Email:** mgosch97@gmail.com  
 - **Resume (PDF):**  [Download CV (English)](assets/Michael_Gosch_EN_Resume.pdf)    [Download Lebenslauf (Deutsch)](assets/Michael_Gosch_DE_Lebenslauf.pdf)
 
@@ -56,4 +56,4 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 
 ## Contact
 Based in Germany. Open to **Junior Data Analyst** roles (remote or on-site).  
-📩 Email: mgosch97@gmail.com • LinkedIn: 
+📩 Email: mgosch97@gmail.com • LinkedIn: https://www.linkedin.com/in/michael-gosch/
