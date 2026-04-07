@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Market Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #333; }
+        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+        h2 { margin-top: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 1rem 0; }
+        code { background: #f6f8fa; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+        pre { background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow-x: auto; }
+        .tag { display: inline-block; background: #e8f0fe; color: #1a56db; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.85em; margin-right: 0.4rem; }
+        .nav { margin: 1rem 0; }
+        .nav a { margin-right: 1rem; }
+    </style>
+</head>
+<body>
+
+<h1>📈 Financial Market Dashboard — Multi-Sector Analysis</h1>
+
+<p>Goal: Analyse stock performance across 5 sectors using 3 years of daily market data to identify price trends, sector returns, seasonal patterns, and volume anomalies.</p>
+
+<span class="tag">Python</span>
+<span class="tag">SQL (SQLite)</span>
+<span class="tag">Tableau Public</span>
+
+<div class="nav">
+    <a href="#insights">Key Insights</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#sql">SQL Highlights</a>
+    <a href="#tools">Tools & Process</a>
+    <a href="https://mgosch97x.github.io/">← Back to Portfolio</a>
+</div>
+
+<h2 id="tools">Tools & Process</h2>
+<ul>
+    <li><strong>Python (yfinance)</strong> — Pulled 3 years of daily stock data for 10 companies across 5 sectors.</li>
+    <li><strong>SQL (SQLite)</strong> — Stored data in a relational database and ran all analysis using window functions, CTEs, and aggregations.</li>
+    <li><strong>Tableau Public</strong> — Built an interactive 4-sheet dashboard with filters for exploring individual stocks and sectors.</li>
+</ul>
+
+<h2 id="insights">Key Insights</h2>
+<ul>
+    <li><strong>Finance was the top-performing sector</strong>, with Goldman Sachs returning 175% and JPMorgan 158%, far outpacing all other sectors.</li>
+    <li><strong>Technology delivered strong but uneven gains</strong>, with AAPL up 122% and MSFT up 108%, while in Healthcare, Pfizer dropped 42% — the only stock with a negative return.</li>
+    <li><strong>March was consistently the strongest month</strong>, with March 2025 delivering exceptional returns — AAPL at 23%, GS at 18%, JPM at 16%.</li>
+    <li><strong>Volume anomalies spiked in late 2024 and early 2025</strong>, with ratios reaching 5–6x the 20-day average, suggesting increased market activity.</li>
+</ul>
+
+<h2 id="dashboard">Dashboard</h2>
+
+<p>The dashboard includes four views: price trends with moving averages, sector return comparison, monthly performance heatmap, and volume anomaly detection.</p>
+
+<a href="https://public.tableau.com/views/FinancialMarketDashboard-Multi-SectorAnalysis/Dashboard1">
+    <img src="../assets/dashboard_screenshot.png" alt="Financial Market Dashboard Screenshot">
+</a>
+
+<p>➡️ <strong><a href="https://public.tableau.com/views/FinancialMarketDashboard-Multi-SectorAnalysis/Dashboard1">View live dashboard on Tableau Public</a></strong></p>
+
+<h2 id="sql">SQL Highlights</h2>
+
+<p>These queries demonstrate window functions, CTEs, and conditional aggregation applied to real financial data to generate actionable insights.</p>
+
+<h3>Moving Averages</h3>
+<p>Calculates 30-day and 90-day moving averages to identify price trends and momentum shifts.</p>
+
+<pre><code>SELECT
+    ticker, sector, date, close,
+    AVG(close) OVER (
+        PARTITION BY ticker
+        ORDER BY date
+        ROWS BETWEEN 29 PRECEDING AND CURRENT ROW
+    ) AS ma_30,
+    AVG(close) OVER (
+        PARTITION BY ticker
+        ORDER BY date
+        ROWS BETWEEN 89 PRECEDING AND CURRENT ROW
+    ) AS ma_90
+FROM stock_prices
+ORDER BY ticker, date</code></pre>
+
+<h3>Volume Anomaly Detection</h3>
+<p>Identifies trading days where volume exceeded 2x the 20-day average, flagging unusual market activity.</p>
+
+<pre><code>WITH vol_avg AS (
+    SELECT
+        ticker, date, volume, close,
+        AVG(volume) OVER (
+            PARTITION BY ticker
+            ORDER BY date
+            ROWS BETWEEN 19 PRECEDING AND CURRENT ROW
+        ) AS avg_volume_20d
+    FROM stock_prices
+)
+SELECT
+    ticker, date, volume,
+    CAST(avg_volume_20d AS INTEGER) AS avg_volume_20d,
+    ROUND(CAST(volume AS REAL) / avg_volume_20d, 2) AS volume_ratio
+FROM vol_avg
+WHERE volume > avg_volume_20d * 2
+ORDER BY volume_ratio DESC</code></pre>
+
+<h2>Links</h2>
+<ul>
+    <li><a href="https://github.com/mgosch97X/financial-dashboard">GitHub Repository</a> — Full code, data, and documentation</li>
+    <li><a href="https://public.tableau.com/views/FinancialMarketDashboard-Multi-SectorAnalysis/Dashboard1">Tableau Public Dashboard</a> — Interactive version</li>
+</ul>
+
+<p><a href="#top">Back to top</a> • <a href="https://mgosch97x.github.io/">← Back to Portfolio</a></p>
+
+</body>
+</html>
