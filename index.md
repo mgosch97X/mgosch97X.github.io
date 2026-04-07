@@ -46,8 +46,7 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 - March was consistently the strongest month, with returns above 13% across multiple stocks.  
 - Volume anomalies of 5–6x the 20-day average clustered in late 2024 and early 2025.
 
-➡️ **GitHub repo:** [Financial Market Dashboard](https://github.com/mgosch97X/financial-dashboard)  
-➡️ **Live dashboard:** [View on Tableau Public](https://public.tableau.com/views/FinancialMarketDashboard-Multi-SectorAnalysis/Dashboard1)
+➡️ **Project page:** [Financial Market Dashboard](projects/Financial_Dashboard.html)
 
 ---
 
