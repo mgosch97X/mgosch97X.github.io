@@ -37,6 +37,20 @@ I build clean, stakeholder-friendly dashboards and analyses that turn data into 
 
 ---
 
+### 📈 Financial Market Dashboard — Multi-Sector Analysis
+
+**Goal:** Analyse stock performance across 5 sectors using 3 years of daily data to identify trends, volatility, and volume anomalies.  
+**Tools:** Python, SQL (SQLite), Tableau Public  
+**Key insights:**  
+- Finance led all sectors with GS returning 175% and JPM 158% over the period.  
+- March was consistently the strongest month, with returns above 13% across multiple stocks.  
+- Volume anomalies of 5–6x the 20-day average clustered in late 2024 and early 2025.
+
+➡️ **GitHub repo:** [Financial Market Dashboard](https://github.com/mgosch97X/financial-dashboard)  
+➡️ **Live dashboard:** [View on Tableau Public](https://public.tableau.com/views/FinancialMarketDashboard-Multi-SectorAnalysis/Dashboard1)
+
+---
+
 ## Skills (What I use)
 - **SQL:** joins, aggregations, window functions, data cleaning  
 - **BI / Dashboards:** Tableau (filters, actions, storytelling dashboards)  
